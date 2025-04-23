@@ -2,6 +2,8 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
+const Router = require("./rotes/reviewRoutes");
+
 // Load env variables
 dotenv.config();
 
@@ -13,6 +15,8 @@ const app = express();
 
 // Middleware to parse JSON
 app.use(express.json());
+
+app.use("/reviews",Router);
 
 // Basic route
 app.get('/', (req, res) => {
