@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
+const cors = require("cors");
 
 const Router = require("./rotes/reviewRoutes");
 
@@ -15,6 +16,7 @@ const app = express();
 
 // Middleware to parse JSON
 app.use(express.json());
+app.use(cors());
 
 app.use("/reviews",Router);
 
