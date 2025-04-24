@@ -2,10 +2,11 @@
 const express=require('express');
 const router=express.Router();
 
-const postRegistrationData=require('../controllers/registrationController.js');
+const {postRegistrationData,getRegistrationData}=require('../controllers/registrationController.js');
 
 
-router.post('/register',postRegistrationData);
+router.post('/postRegister',postRegistrationData);
+router.get('/getRegister',getRegistrationData);
 
 
 module.exports=router;

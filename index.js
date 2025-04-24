@@ -3,7 +3,9 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const cors = require("cors");
 
-const Router = require("./rotes/reviewRoutes");
+const reviewRoute = require("./rotes/reviewRoutes");
+
+const registrationRoute = require("./rotes/registrationRoutes");
 
 // Load env variables
 dotenv.config();
@@ -18,7 +20,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/reviews",Router);
+app.use("/reviews",reviewRoute);
+app.use("/registration",registrationRoute);
 
 // Basic route
 app.get('/', (req, res) => {

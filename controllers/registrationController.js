@@ -14,7 +14,22 @@ const postRegistrationData=async(req,res)=>{
 
   }
 
+}
+
+
+
+const getRegistrationData = async(req,res)=>{
+  try{
+    const users = await registerModel.find();
+   res.status(200).json(users);
+
+  }catch(error){
+
+    res.status(500).json({success:false,message:"Data not shown",error:error.message})
+
+  }
+  
 
 }
 
-module.exports=postRegistrationData;
+module.exports = {postRegistrationData,getRegistrationData};
