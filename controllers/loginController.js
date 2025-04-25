@@ -18,9 +18,13 @@ const loginPage=async(req,res)=>{
         if(!isPasswordMatch){
           return res.status(401).json({success:false,message:"Wrong credential"});
         }   
+
+
+        const SECRET_KEY = "Verbiq_secret_key"; //before deploy move this to .env
+
         const token = jwt.sign(
           { id: user.id, email: user.emailId }, // payload
-          process.env.SECRET_KEY,
+          SECRET_KEY,
           { expiresIn: '1h' } // token expiry
         );
      
