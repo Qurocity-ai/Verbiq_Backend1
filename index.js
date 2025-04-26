@@ -3,12 +3,16 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const cors = require("cors");
 
-const reviewRoute = require("./rotes/reviewRoutes");
-const registrationRoute = require("./rotes/registrationRoutes");
-const loginRoute=require('./rotes/loginRoutes');
+
 
 // Load env variables
 dotenv.config();
+
+const reviewRoute = require("./rotes/reviewRoutes");
+const registrationRoute = require("./rotes/registrationRoutes");
+const loginRoute=require('./rotes/loginRoutes');
+const otpRoute=require('./rotes/otpRoutes');
+
 
 // Connect to database
 connectDB();
@@ -23,6 +27,7 @@ app.use(cors());
 app.use("/reviews",reviewRoute);
 app.use("/registration",registrationRoute);
 app.use("/login",loginRoute);
+app.use("/reset",otpRoute);
 
 // Basic route
 app.get('/', (req, res) => {

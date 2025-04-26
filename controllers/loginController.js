@@ -20,11 +20,11 @@ const loginPage=async(req,res)=>{
         }   
 
 
-        const SECRET_KEY = "Verbiq_secret_key"; //before deploy move this to .env
+       //before deploy move this to .env
 
         const token = jwt.sign(
           { id: user.id, email: user.emailId }, // payload
-          SECRET_KEY,
+         process.env.SECRET_KEY,
           { expiresIn: '1h' } // token expiry
         );
      

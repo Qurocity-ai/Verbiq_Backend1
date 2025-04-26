@@ -53,7 +53,9 @@ const regSchema=new mongoose.Schema({
     promptEvaluationAnalyst: Boolean
   },
   weeklyCommitmentHours: Number,
-  chargesPerHour: Number
+  chargesPerHour: Number,
+  otp: { type: String },
+otpExpires: { type: Date },
 }, {
   timestamps: true
 })
