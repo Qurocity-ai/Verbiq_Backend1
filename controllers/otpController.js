@@ -23,7 +23,7 @@ exports.sendOtp = async (req, res) => {
     }
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString(); // 6 digit OTP
-    const otpExpires = new Date(Date.now() +  2* 60 * 1000); // 10 minutes
+    const otpExpires = new Date(Date.now() +  5* 60 * 1000); // 5 minutes
 
     user.otp = otp;
     user.otpExpires = otpExpires;
@@ -34,7 +34,7 @@ exports.sendOtp = async (req, res) => {
       from: process.env.EMAIL_USER,
       to: emailId,
       subject: 'Your OTP Code',
-      text: `Your OTP is: ${otp}. It will expire within 2 minutes.`
+      text: `Your OTP is: ${otp}. It will expire within 5 minutes.`
     });
 
     res.status(200).json({ success: true, message: 'OTP sent successfully' });

@@ -2,7 +2,7 @@
 const mongoose=require('mongoose');
 
 const regSchema=new mongoose.Schema({
-  password:{ type: String, required: true },
+  // password:{ type: String, required: true },
     fullName: { type: String, required: true },
   contactNumber: { type: String, required: true },
   emailId: { type: String, required: true, unique: true },
