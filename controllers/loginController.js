@@ -1,5 +1,7 @@
 
 const registrationModel=require('../models/registrationModel');
+// const CompanyModel = require("../models/CompanyModel");
+const CandidateModel = require("../models/CandidateModel");
 const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
 
@@ -8,7 +10,9 @@ const jwt=require('jsonwebtoken');
 const loginPage=async(req,res)=>{
      try {
         const{emailId,password}=req.body;
-        const user=await registrationModel.findOne({emailId:emailId});
+
+        const user=await CandidateModel.findOne({emailId:emailId});
+        
         if(!user){
           return res.status(404).json({success:false,message:"User not found"});
         }
@@ -23,15 +27,16 @@ const loginPage=async(req,res)=>{
        //before deploy move this to .env
 
         const token = jwt.sign(
-          { id: user.id, email: user.emailId }, // payload
+          { id: user.id, email: user.emailId ,role:user.role}, // payload
          process.env.SECRET_KEY,
-          { expiresIn: '1h' } // token expiry
+          { expiresIn: '7d' } // token expiry
         );
      
         return res.status(200).json({
           success:true,
           message: 'Login successful',
           token: token,
+          role:user.role,
           emailId:user.emailId
         });
         

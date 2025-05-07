@@ -12,6 +12,8 @@ const reviewRoute = require("./rotes/reviewRoutes");
 const registrationRoute = require("./rotes/registrationRoutes");
 const loginRoute=require('./rotes/loginRoutes');
 const otpRoute=require('./rotes/otpRoutes');
+const dashboardRoute = require('./rotes/dashboardRoute');
+
 
 
 // Connect to database
@@ -28,6 +30,9 @@ app.use("/reviews",reviewRoute);
 app.use("/registration",registrationRoute);
 app.use("/login",loginRoute);
 app.use("/reset",otpRoute);
+app.use('/candidate',registrationRoute);
+// app.use('/company',registrationRoute);
+app.use('/dashboard',dashboardRoute);
 
 // Basic route
 app.get('/', (req, res) => {

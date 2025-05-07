@@ -1,5 +1,8 @@
 
 const registerModel=require('../models/registrationModel.js');
+const CandidateModel =require('../models/CandidateModel.js');
+// const CompanyModel = require('../models/CompanyModel');
+
 const bcrypt=require('bcryptjs')
 const nodemailer=require('nodemailer')
 
@@ -57,4 +60,73 @@ const getRegistrationData = async(req,res)=>{
 
 }
 
-module.exports = {postRegistrationData,getRegistrationData};
+const postCandidateregistration = async(req,res)=>{
+  try{
+
+    const password = req.body.password;
+
+
+    const hashpassword =await bcrypt.hash(password,5);
+
+    const user =await CandidateModel.create({...req.body,password:hashpassword});
+    const newUser =await user.save();
+
+    res.status(200).json({success:true,message:"Candidate data saved",newUser});
+
+  }catch(error){
+    res.status(400).json({success:false,message:"Data not registered",error:error.message});
+  }
+
+}
+
+const getCandidateRegistration = async(req,res)=>{
+
+  try{
+
+    const users =await CandidateModel.find();
+    res.status(200).json({success:true,users});
+
+  }catch(err){
+    res.status(400).json({success:false,message:"Candidate data not found"});
+  }
+
+}
+
+
+
+// const postCompanyRegistration = async(req,res)=>{
+//   try{
+
+//     const {Companyname, emailId, password,name,Designation} = req.body
+
+
+//     const hashpassword =await bcrypt.hash(password,5);
+
+//     const Companyuser =await CompanyModel.create({Companyname,emailId,password:hashpassword,name,Designation});
+//     const newUser = Companyuser.save();
+
+//     res.status(200).json({success:true,message:"Candidate data saved",newUser});
+
+//   }catch(error){
+//     res.status(400).json({success:false,message:"Data not registered",error:error.message});
+//   }
+
+// }
+
+
+// const getCompanyRegistration = async(req,res)=>{
+
+//   try{
+
+//     const Companyusers =await CompanyModel.find();
+//     res.status(200).json({success:true,Companyusers});
+
+//   }catch(err){
+//     res.status(400).json({success:false,message:"Candidate data not found"});
+//   }
+
+// }
+
+
+
+module.exports = {postRegistrationData,getRegistrationData,postCandidateregistration,getCandidateRegistration};
