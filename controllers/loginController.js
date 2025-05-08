@@ -39,6 +39,7 @@ const loginPage=async(req,res)=>{
           role:user.role,
           emailId:user.emailId,
           fullname:user.fullname,
+          companyName:user.companyName
           
         });
         
