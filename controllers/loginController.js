@@ -37,7 +37,9 @@ const loginPage=async(req,res)=>{
           message: 'Login successful',
           token: token,
           role:user.role,
-          emailId:user.emailId
+          emailId:user.emailId,
+          fullname:user.fullname,
+          
         });
         
         
