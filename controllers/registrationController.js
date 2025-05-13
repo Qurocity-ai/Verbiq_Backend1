@@ -63,7 +63,26 @@ const getRegistrationData = async(req,res)=>{
 const postCandidateregistration = async(req,res)=>{
   try{
 
-    const password = req.body.password;
+     const { emailId, role, password } = req.body;
+
+   
+    const existingUser = await CandidateModel.findOne({ emailId });
+
+     if (existingUser) {
+      if (existingUser.role !== role) {
+        
+        return res.status(400).json({
+          success: false,
+          message: `Email is already registered with role: ${existingUser.role}`,
+        });
+      } else {
+        
+        return res.status(400).json({
+          success: false,
+          message: "User already registered. Please proceed to login.",
+        });
+      }
+    }
 
 
     const hashpassword =await bcrypt.hash(password,5);
