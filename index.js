@@ -13,6 +13,7 @@ const registrationRoute = require("./rotes/registrationRoutes");
 const loginRoute=require('./rotes/loginRoutes');
 const otpRoute=require('./rotes/otpRoutes');
 const dashboardRoute = require('./rotes/dashboardRoute');
+const jobsRoute=require('./rotes/jobsRoute');
 
 
 
@@ -33,6 +34,7 @@ app.use("/reset",otpRoute);
 app.use('/candidate',registrationRoute);
 // app.use('/company',registrationRoute);
 app.use('/dashboard',dashboardRoute);
+app.use('/jobs',jobsRoute);
 
 // Basic route
 app.get('/', (req, res) => {
