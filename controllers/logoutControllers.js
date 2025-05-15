@@ -13,7 +13,7 @@ const logout=(req,res)=>{
     };
 
     addTokenToBlacklist(token);
-
+    
     return res.status(200).json({
          success:true,
          message: "Logged out sucessfully."

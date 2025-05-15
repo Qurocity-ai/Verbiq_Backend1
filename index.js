@@ -34,7 +34,7 @@ app.use("/reset",otpRoute);
 app.use('/candidate',registrationRoute);
 // app.use('/company',registrationRoute);
 app.use('/dashboard',dashboardRoute);
-app.use("/loggout", logoutRoute);
+app.use("/logout", logoutRoute);
 
 // Basic route
 app.get('/', (req, res) => {

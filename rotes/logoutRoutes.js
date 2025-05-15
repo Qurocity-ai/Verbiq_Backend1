@@ -1,11 +1,7 @@
 const express = require ("express");
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth");
+const logout = require("../controllers/logoutControllers");
 
-router.post("/logout",(req,res)=>{
-    return res.status(200).json({
-        success: true,
-        message: "Logged out successfully."
-    });
-});
-
+router.post("/", logout);
 module.exports = router;

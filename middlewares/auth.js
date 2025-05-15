@@ -1,4 +1,6 @@
 const jwt = require("jsonwebtoken");
+const {isTokenBlacklisted} = require("../utils/blacklist");
+
 
 const middleware = (req, res, next) => {
   try {
@@ -11,6 +13,15 @@ const middleware = (req, res, next) => {
         message: "Unauthorized: token not provided",
       });
     }
+  
+    //check if token is blacklisted
+
+    if(isTokenBlacklisted(token)){
+      return res.status(401).json({
+        success: false,
+        message: "Unauthorized: token has been logged out",
+      });
+    };
 
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
 
