@@ -29,7 +29,7 @@ const jobPosts=async(req,res)=>{
  const updateJobPosts=async (req,res)=>{
     try {
         const updatedJob=await jobPostModel.findByIdAndUpdate(req.params.id,req.body,{new:true,runValidators:true})
-        res.status(500).json({success:true,message:"Job post updated successfully",updatedJob});
+        res.status(200).json({success:true,message:"Job post updated successfully",updatedJob});
     } 
     catch (error) {
         res.status(500).json({success:false,message:"Error while updating jobposts",error:error.message})
@@ -40,7 +40,7 @@ const jobPosts=async(req,res)=>{
  const deleteJobPosts=async(req,res)=>{
     try {
         const deletedJob=await jobPostModel.findByIdAndDelete(req.params.id)
-        res.status(500).json({success:true,message:"Job post deleted successfully",deletedJob});
+        res.status(200).json({success:true,message:"Job post deleted successfully",deletedJob});
     } 
     catch (error) {
         res.status(500).json({success:false,message:"Error while deleting jobpost",error:error.message})
