@@ -12,6 +12,11 @@ const JobPostSchema = new mongoose.Schema({
   emailId: { type: String, required: true },
   employmentType: [{type:String,required:true}],
   experienceLevel: [{type:String,required:true}],
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    
+    required: true
+  },
   postedAt: { type: Date, default: Date.now }
 });
 

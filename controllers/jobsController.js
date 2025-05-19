@@ -4,7 +4,8 @@ const jobPostModel=require('../models/JobPostModel')
 
 const jobPosts=async(req,res)=>{
   try {
-    const user=new jobPostModel(req.body);
+    const userId=req.user.id
+    const user=new jobPostModel({...req.body, createdBy:userId});
     const saveUser=await user.save();
     res.status(200).json({success:true,message:"Job post created successfully",saveUser})
 
@@ -16,8 +17,16 @@ const jobPosts=async(req,res)=>{
 }
 
  const getJobPosts=async(req,res)=>{
+    let allPosts
     try {
-        const allPosts=await jobPostModel.find();
+         const userId=req.user.id //taking data from jwt
+         const userRole=req.user.role;
+        if(userRole==="Company"){
+            allPosts=await jobPostModel.find({createdBy:userId})
+        }
+        else{
+            allPosts=await jobPostModel.find(); 
+        }
         res.status(200).json({allPosts})
     } 
     catch (error) {

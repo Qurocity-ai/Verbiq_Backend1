@@ -27,7 +27,7 @@ const loginPage=async(req,res)=>{
        //before deploy move this to .env
 
         const token = jwt.sign(
-          { id: user.id, email: user.emailId ,role:user.role}, // payload
+          { id: user.id, emailId: user.emailId ,role:user.role}, // payload
          process.env.SECRET_KEY,
           { expiresIn: '7d' } // token expiry
         );
