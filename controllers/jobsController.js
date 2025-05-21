@@ -34,6 +34,19 @@ const jobPosts=async(req,res)=>{
 
     }
  }
+ // GET /api/jobs/:id
+const getSingleJobPost = async (req, res) => {
+  try {
+    const job = await jobPostModel.findById(req.params.id);
+    if (!job) {
+      return res.status(404).json({ success: false, message: "Job not found" });
+    }
+    res.status(200).json({ job });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Error fetching job post", error: error.message });
+  }
+};
+
 
  const updateJobPosts=async (req,res)=>{
     try {
@@ -57,4 +70,4 @@ const jobPosts=async(req,res)=>{
     }
  }
 
-  module.exports={jobPosts,getJobPosts,updateJobPosts,deleteJobPosts};
+  module.exports={jobPosts,getJobPosts,updateJobPosts,deleteJobPosts,getSingleJobPost};
