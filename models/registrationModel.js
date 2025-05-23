@@ -8,7 +8,7 @@ const regSchema=new mongoose.Schema({
   emailId: { type: String, required: true, unique: true },
   location: { type: String, required: true },
   currentCTC: { type: Number, required: true },
-  linkToPortfolio: String,
+  linkToPortfolio: {type: String},
   nativeLanguages: [
     {
         nativeLanguage: String,
