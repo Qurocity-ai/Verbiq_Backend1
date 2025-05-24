@@ -15,6 +15,7 @@ const otpRoute=require('./rotes/otpRoutes');
 const dashboardRoute = require('./rotes/dashboardRoute');
 const logoutRoute = require("./rotes/logoutRoutes");
 const jobsRoute = require("./rotes/jobsRoute");
+const jobApplicationRoute=require('./rotes/jobApplicationRoute')
 
 
 
