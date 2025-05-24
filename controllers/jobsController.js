@@ -69,5 +69,7 @@ const getSingleJobPost = async (req, res) => {
 
     }
  }
+ 
+ 
 
   module.exports={jobPosts,getJobPosts,updateJobPosts,deleteJobPosts,getSingleJobPost};
