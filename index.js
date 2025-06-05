@@ -15,7 +15,8 @@ const otpRoute=require('./rotes/otpRoutes');
 const dashboardRoute = require('./rotes/dashboardRoute');
 const logoutRoute = require("./rotes/logoutRoutes");
 const jobsRoute = require("./rotes/jobsRoute");
-const jobApplicationRoute=require('./rotes/jobApplicationRoute')
+const jobApplicationRoute=require('./rotes/jobApplicationRoute');
+const filterRoute=require('./rotes/filterRoute')
 
 
 
@@ -39,6 +40,7 @@ app.use('/dashboard',dashboardRoute);
 app.use("/logout",logoutRoute);
 app.use('/jobs',jobsRoute);
 app.use('/applications',jobApplicationRoute);
+app.use('/filter',filterRoute)
 
 
 // Basic route
