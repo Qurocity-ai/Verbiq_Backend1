@@ -2,6 +2,8 @@ const CallbackModel=require('../models/CallbackModel')
 
 const callbackreq=async(req,res)=>{
     try {
+            const { name, emailId, number, comment } = req.body;
+
          if (!name || !emailId || !number) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
