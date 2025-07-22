@@ -17,6 +17,7 @@ const logoutRoute = require("./rotes/logoutRoutes");
 const jobsRoute = require("./rotes/jobsRoute");
 const jobApplicationRoute=require('./rotes/jobApplicationRoute');
 const filterRoute=require('./rotes/filterRoute')
+const callbackRoute=require('./rotes/callbackRoute'); 
 
 
 
@@ -41,6 +42,7 @@ app.use("/logout",logoutRoute);
 app.use('/jobs',jobsRoute);
 app.use('/applications',jobApplicationRoute);
 app.use('/filter',filterRoute)
+app.use('/query',callbackRoute);
 
 
 // Basic route
