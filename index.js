@@ -25,17 +25,17 @@ const app = express();
 
 // Middleware to parse JSON
 app.use(express.json());
-const corsOptions = {
-  origin: [
-    "http://localhost:5174", // Your frontend URL
-    "https://verbiq.ai", // Add production URL when ready
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-  optionsSuccessStatus: 200, // For legacy browser support
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: [
+//     "http://localhost:5174", // Your frontend URL
+//     "https://verbiq.ai", // Add production URL when ready
+//   ],
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   allowedHeaders: ["Content-Type", "Authorization"],
+//   credentials: true,
+//   optionsSuccessStatus: 200, // For legacy browser support
+// };
+app.use(cors());
 
 app.use("/reviews", reviewRoute);
 app.use("/registration", registrationRoute);
